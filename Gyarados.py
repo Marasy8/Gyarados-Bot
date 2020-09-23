@@ -45,7 +45,7 @@ send_weekly_reminder.start()
     
 
 # this is bot being run, contains the token
-client.run('NzUxMjQ3MjM1ODc0MDI5NzIw.X1GTgg.U6mt3aKvoKkuJpMjarxsiFuN-nk')
+client.run('')
 
 
 
