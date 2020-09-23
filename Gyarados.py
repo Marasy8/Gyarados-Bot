@@ -45,7 +45,10 @@ send_weekly_reminder.start()
     
 
 # this is bot being run, contains the token
-client.run('')
+# import config file with the token
+if __name__ == '__main__':
+    import config
+    client.run(config.token)
 
 
 
