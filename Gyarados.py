@@ -35,9 +35,13 @@ async def send_weekly_reminder():
     
 @send_weekly_reminder.before_loop
 async def weekly_reminder_calculate():
-    today_weekday = datetime.date.today()
-    next_weekday = get_next_weekday(today_weekday,3) # 2 = Wednesday, 3:30am next day, Thursday is 9:30pm here Wednesday
+    today_weekday = datetime.datetime.utcnow().date()
+    next_weekday = get_next_weekday(today_weekday,2) # 2 = Wednesday, 3:30am next day, Thursday is 9:30pm here Wednesday
     then = datetime.datetime.combine(next_weekday, scheduled_message_time)
+    #print("current weekday is " + str(today_weekday))
+    #print("next weekday is " + str(next_weekday))
+    #print("then is " + str(then))
+    print("The next announcement will be on " + str(next_weekday.weekday()) + " at " + str(then))
     await discord.utils.sleep_until(then)
     print("24 hours until the weekly meeting starts!")
     
