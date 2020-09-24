@@ -12,7 +12,7 @@ client = commands.Bot(command_prefix = '.') # . is a string that represents the 
 async def on_ready():
     print('Bot is ready.')
     
-scheduled_message_time = datetime.time(minute=30, hour = 3) # UTC time, 12:30 pm MST
+scheduled_message_time = datetime.time(hour = 3) # UTC time, 12:30 pm MST
 
 def get_next_weekday(current,desired):
     days_ahead = desired - current.weekday()
@@ -31,12 +31,12 @@ def get_next_weekday(current,desired):
 async def send_weekly_reminder():
     await client.wait_until_ready()
     channel = client.get_channel(750941709013352538)
-    await channel.send("@everyone 24 hours until the weekly meeting starts! See you there.")
+    await channel.send("@everyone 30 minutes until the meeting starts! See you there.")
     
 @send_weekly_reminder.before_loop
 async def weekly_reminder_calculate():
     today_weekday = datetime.datetime.utcnow().date()
-    next_weekday = get_next_weekday(today_weekday,2) # 2 = Wednesday, 3:30am next day, Thursday is 9:30pm here Wednesday
+    next_weekday = get_next_weekday(today_weekday,3) #0 = Monday, 3:30am next day, Thursday is 9:30pm here Wednesday
     then = datetime.datetime.combine(next_weekday, scheduled_message_time)
     #print("current weekday is " + str(today_weekday))
     #print("next weekday is " + str(next_weekday))
