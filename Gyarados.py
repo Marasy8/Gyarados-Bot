@@ -35,6 +35,7 @@ async def send_weekly_reminder():
     current_time = datetime.datetime.utcnow()
     right_before = current_time + datetime.timedelta(hours=23, minutes = 55)
     await discord.utils.sleep_until(right_before)
+    await client.wait_until_ready()
     await channel.send("@everyone 5 minutes until the meeting starts! See you there.")
     
 @send_weekly_reminder.before_loop
