@@ -12,7 +12,7 @@ client = commands.Bot(command_prefix = '.') # . is a string that represents the 
 async def on_ready():
     print('Bot is ready.')
     
-scheduled_message_time = datetime.time(hour = 3, minute = 30) # UTC time, 12:30 pm MST
+scheduled_message_time = datetime.time(hour = 4 , minute = 30) # UTC time, 12:30 pm MST
 
 def get_next_weekday(current,desired):
     days_ahead = desired - current.weekday()
